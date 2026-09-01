@@ -28,11 +28,10 @@ function Home() {
 
     const addStudent = async (e) => {
         e.preventDefault()
-        if (formData.name=="" || formData.age=="" || formData.course=="" || formData.email=="") {
+        if (!formData.name || !formData.age || !formData.course || !formData.email) {
             alert("Please fill all fields")
         }
         try {
-            console.log(formData)
             const newStudent = {
                 name: formData.name,
                 age: formData.age,
@@ -67,7 +66,6 @@ function Home() {
         }
     }
     const handleChange = (e) => {
-        console(e.target.value)
         setFormData({
             ...formData,
             [e.target.name]: e.target.value
