@@ -28,32 +28,30 @@ function Home() {
 
     const addStudent = async (e) => {
         e.preventDefault()
-        if (formData.name == "" || formData.age == "" || formData.course == "" || formData.email == "") {
+        if (formData.name=="" || formData.age=="" || formData.course=="" || formData.email=="") {
             alert("Please fill all fields")
         }
-        else {
-            try {
-                console.log(formData)
-                const newStudent = {
-                    name: formData.name,
-                    age: formData.age,
-                    course: formData.course,
-                    email: formData.email
-                }
-                await addStudentAPI(newStudent)
-                alert("Student added successfully!")
-                setFormData({
-                    name: "",
-                    age: "",
-                    course: "",
-                    email: ""
-                })
-                getStudents()
-
-            } catch (error) {
-                console.log(error)
-                alert("Error adding student")
+        try {
+            console.log(formData)
+            const newStudent = {
+                name: formData.name,
+                age: formData.age,
+                course: formData.course,
+                email: formData.email
             }
+            await addStudentAPI(newStudent)
+            alert("Student added successfully!")
+            setFormData({
+                name: "",
+                age: "",
+                course: "",
+                email: ""
+            })
+            getStudents()
+
+        } catch (error) {
+            console.log(error)
+            alert("Error adding student")
         }
     }
     const deleteStudent = async (id) => {
