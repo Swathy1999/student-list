@@ -10,14 +10,17 @@ function Home() {
         course: "",
         email: ""
     })
-
+    const handleChange = (e) => {
+        setFormData({
+            ...formData,
+            [e.target.name]: e.target.value
+        })
+    }
     const getStudents = async () => {
         try {
             const response = await viewStudentAPI()
-            console.log(response.data)
             setStudent(response.data)
         } catch (error) {
-            console.log(error)
             alert("Error fetching students")
         }
     }
@@ -49,7 +52,6 @@ function Home() {
             getStudents()
 
         } catch (error) {
-            console.log(error)
             alert("Error adding student")
         }
     }
@@ -61,16 +63,10 @@ function Home() {
             getStudents()
 
         } catch (error) {
-            console.log(error)
             alert("Error deleting student")
         }
     }
-    const handleChange = (e) => {
-        setFormData({
-            ...formData,
-            [e.target.name]: e.target.value
-        })
-    }
+
     return (
         <div className="container py-5">
             <div className="mb-5">
